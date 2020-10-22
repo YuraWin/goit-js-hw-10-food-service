@@ -13,7 +13,7 @@ const ref = {
     body: document.querySelector('body')
 };
 
-themeStatus = localStorage.getItem('themeStatus') || 'light-theme';
+themeStatus = localStorage.getItem('themeStatus') || Theme.LIGHT;
 
 if (themeStatus === Theme.DARK) {
     ref.body.classList.replace(Theme.LIGHT, Theme.DARK);
@@ -25,12 +25,11 @@ ref.switcher.addEventListener('change', onSwitchTheme);
 
 function onSwitchTheme(evt) {
     if (evt.target.checked) {
-        ref.body.classList.replace (Theme.LIGHT,Theme.DARK)
+        ref.body.classList.replace(Theme.LIGHT, Theme.DARK)
+        localStorage.setItem('themeStatus', Theme.DARK)
     }
     else {
-        ref.body.classList.replace (Theme.DARK,Theme.LIGHT)
+        ref.body.classList.replace(Theme.DARK, Theme.LIGHT)
+        localStorage.setItem('themeStatus', Theme.LIGHT)
     }
-  
-    localStorage.setItem('themeStatus', ref.body.classList)
-    
 };
